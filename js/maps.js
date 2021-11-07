@@ -169,6 +169,56 @@ var map = L.map('map', {
     estados_layer
   ]
 });
+
+dbo05_layer.eachLayer(function (layer) {
+  layer.bindPopup(`<strong> Nombre: </strong> ${layer.feature.properties.nom_emca} <br>
+  <strong> Estado: </strong> ${layer.feature.properties.nom_edo} <br>
+  <strong> Municipio: </strong> ${layer.feature.properties.nom_mpio} <br>
+  <strong> Cuerpo agua: </strong> ${layer.feature.properties.cuer_agu} <br>
+  `);
+});
+
+
+var info = L.control();
+
+info.onAdd = function(map){
+  this._div = L.DomUtil.create('div','info');
+  this.update();
+  return this._div;
+}
+
+// actualizar weas
+info.update = function(props){
+  this._div.innerHTML = 
+  '<h5>Información de los Rios</h5>' +
+  (props ? `<b> ID: ${props.OBJECTID}</b><br> 
+    <b>ENTIDAD: ${props.ENTIDAD}<b><br>
+    <b>TIPO: ${props.TIPO}<b><br>` : "Pasa el puntero por un Rio")
+  ;
+}
+
+info.addTo(map);
+
+//actualiza la informacion del div
+function updateFeature(e){
+  var layer = e.target;
+
+  info.update(layer.feature.properties);
+}
+
+//resetea la informacion
+function resetFeature(e){
+  info.update();
+}
+
+// se asignan a todos los rios estos eventos
+rios_layer.eachLayer(function (layer) {
+  layer.on({
+    mouseover: updateFeature,
+    mouseout: resetFeature
+  });
+});
+
 /*
 map.on('loading', function (event) {
   console.log('start loading tiles');
