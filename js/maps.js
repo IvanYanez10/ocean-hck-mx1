@@ -75,24 +75,6 @@ var estados_layer = L.geoJSON(estados_data, {
   }
 );
 
-var social_2008_layer = L.geoJSON(social_2008_data,
-  {
-    fillColor: 'red',
-    opacity: 0.6,
-    fillOpacity: 0.5,
-    color: 'red',
-    weight: 0.5,
-  });
-
-var vulnerabilidad_layer = L.geoJSON(vulnerabilidad_data,
-  {
-    fillColor: '#4e5257',
-    opacity: 0.6,
-    fillOpacity: 0.5,
-    color: '#4e5257',
-    weight: 0.5,
-  });
-
 /* propiedades de la capa de rios */
 var dbo05_layer = L.geoJSON(dbo05_data,
   {
