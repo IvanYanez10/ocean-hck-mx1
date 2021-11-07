@@ -74,6 +74,25 @@ var estados_layer = L.geoJSON(estados_data, {
     }    
   }
 );
+
+var social_2008_layer = L.geoJSON(social_2008_data,
+  {
+    fillColor: 'red',
+    opacity: 0.6,
+    fillOpacity: 0.5,
+    color: 'red',
+    weight: 0.5,
+  });
+
+var vulnerabilidad_layer = L.geoJSON(vulnerabilidad_data,
+  {
+    fillColor: '#4e5257',
+    opacity: 0.6,
+    fillOpacity: 0.5,
+    color: '#4e5257',
+    weight: 0.5,
+  });
+
 /* propiedades de la capa de rios */
 var dbo05_layer = L.geoJSON(dbo05_data,
   {
@@ -268,6 +287,33 @@ usv_2017_layer.eachLayer(function (layer){
   layer.bindPopup(`<strong> Estado: </strong> ${layer.feature.properties.DESCRIPCIO} <br>`);
 });
 
+// vulnerabilidad_layer.eachLayer(function (layer){
+//   layer.bindPopup(`<strong>Nivel: </strong> ${layer.feature.properties.Vulnerabil} <br>`);
+// })
+
+function getColor(tipo) {
+  return tipo === "Muy Baja" ? "#fdb777"  :
+         tipo === "Baja" ? "#fda766" :
+         tipo === "Media" ? "#fd9346" : 
+         tipo === "Alta" ? "#fd7f2c" :
+         tipo === "Muy Alta" ? "#ff6200" :
+          "#ffffff";
+}
+
+function style(feature){
+  return {
+    fillColor : getColor(feature.properties.Vulnerabil),
+    // weight: 2,
+    // opacity: 1,
+    // color: 'white',
+    // dashArray: '3',
+    fillOpacity : 0.7
+  }
+}
+
+vulnerabilidad_layer.setStyle(style);
+
+
 // actualizar weas
 /*
 var info = L.control();
@@ -306,7 +352,9 @@ var data_layers = {
   "Indice de marginidad 2010": indice_marginidad_2010_layer,
   "Indice de marginidad 2015": indice_marginidad_2015_layer,
   "USV 2005": usv_2005_layer,
-  "USV 2017": usv_2017_layer
+  "USV 2017": usv_2017_layer,
+  "social 2008" : social_2008_layer,
+  "vulnerabilidad" : vulnerabilidad_layer
 };
 
 // overlayMaps
