@@ -168,8 +168,8 @@ var indice_marginidad_2015_layer = L.geoJSON(indice_marginidad_2015_data, {
     style: (feature) => {
       var colors = {
         'Muy alto': {
-          color: '#8B323C'
-        },
+          color: '#8B323C' // #8B323C
+        }, 
         "Alto": {
           color: '#904432'
         },
@@ -217,7 +217,7 @@ var usv_2005_layer = L.geoJSON(usv_2005_data, {
 /* propiedades de la capa de usv_2016_layer */
 var usv_2017_layer = L.geoJSON(usv_2017_data, {
   style: feature => {
-    console.log(feature['properties']['DESCRIPCIO']);
+    //console.log(feature['properties']['DESCRIPCIO']);
     var color = Math.floor(Math.random() * 16777215).toString(16); //DESCRIPCIO
       return {
         fillColor: `#${color}`,
@@ -228,6 +228,76 @@ var usv_2017_layer = L.geoJSON(usv_2017_data, {
       };
     }
   }
+);
+
+
+/* propiedades de la capa de usv_2016_layer */
+var social_2008_layer = L.geoJSON(social_2008_data, {
+  style: feature => {
+    var color = Math.floor(Math.random() * 16777215).toString(16); //DESCRIPCIO
+    return {
+      fillColor: `#${color}`,
+      opacity: 0.3,
+      fillOpacity: 0.2,
+      color: `#${color}`,
+      weight: 0.8,
+    };
+  }
+}
+);
+
+
+/* propiedades de la capa de usv_2016_layer */
+var social_2018_layer = L.geoJSON(social_2018_data, {
+  style: feature => {
+    var color = Math.floor(Math.random() * 16777215).toString(16); //DESCRIPCIO
+    return {
+      fillColor: `#${color}`,
+      opacity: 0.3,
+      fillOpacity: 0.2,
+      color: `#${color}`,
+      weight: 0.8,
+    };
+  }
+}
+);
+
+
+/* propiedades de la capa de usv_2016_layer */
+var vulnerabilidad_contaminacion_layer = L.geoJSON(vulnerabilidad_contaminacion_data, {
+  style: (feature) => {
+    var colors = {
+      'Muy Alta': {
+        color: '#8B323C'
+      },
+      "Alta": {
+        color: '#904432'
+      },
+      "Media": {
+        color: '#956232'
+      },
+      "Baja": {
+        color: '#9A8433'
+      },
+      "Muy Baja": {
+        color: '#959F33'
+      }
+    };
+    let iterableColors = Object.entries(colors);
+
+    var color = iterableColors.find(col => {
+      return feature['properties']['Vulnerabil'] === col[0]
+    });
+    console.log(color);
+    return {
+      fillColor: color[1].color,
+      opacity: 0.5,
+      fillOpacity: 0.5,
+      color: color[1].color,
+      weight: 1.0,
+    };
+  }
+}
 );
 
 /* creacion y propiedades del mapa */
@@ -306,7 +376,10 @@ var data_layers = {
   "Indice de marginidad 2010": indice_marginidad_2010_layer,
   "Indice de marginidad 2015": indice_marginidad_2015_layer,
   "USV 2005": usv_2005_layer,
-  "USV 2017": usv_2017_layer
+  "USV 2017": usv_2017_layer,
+  "Social 2008": social_2008_layer,
+  "Social 2018": social_2018_layer,
+  "Vulnerabilidad contaminacion": vulnerabilidad_contaminacion_layer
 };
 
 // overlayMaps
