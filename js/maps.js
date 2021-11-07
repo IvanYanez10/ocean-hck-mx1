@@ -40,9 +40,8 @@ var cuencas_layer = L.geoJSON(cuencas_balsas_data,
   }
 );
 /* propiedades de la capa de estados */
-var estados_layer = L.geoJSON(estados_data,
-  {
-    style: function (feature) {
+var estados_layer = L.geoJSON(estados_data, {
+  style: () => {
       var color = Math.floor(Math.random() * 16777215).toString(16);
       //console.log(`estado: ${feature['properties']['NOM_EDO']} color: #${color}`);
       return { 
@@ -58,11 +57,43 @@ var estados_layer = L.geoJSON(estados_data,
 /* propiedades de la capa de rios */
 var dbo05_layer = L.geoJSON(dbo05_data,
   {
-    fillColor: 'green',
+    onEachFeature: function (features, layer) {
+      var circles_colors = {
+        "Excelente": {
+          link: 'https://ocean-hck-mx1.website/data/dbo05/circle-excelente.png'
+        },
+        "Buena Calidad": {
+          link: 'https://ocean-hck-mx1.website/data/dbo05/circle-bueno.png'
+        },
+        "Aceptable": {
+          link: 'https://ocean-hck-mx1.website/data/dbo05/circle-aceptable.png'
+        },
+        "Contaminada": {
+          link: 'https://ocean-hck-mx1.website/data/dbo05/circle-contaminada.png'
+        },
+        "Fuertemente Contaminada": {
+          link: 'https://ocean-hck-mx1.website/data/dbo05/circle-fuertemente-contaminada.png'
+        }
+      };
+      let iterableCirclesColors = Object.entries(circles_colors);
+
+      var colorCircle = iterableCirclesColors.find(col => {
+        return features['properties'].dbo_clas === col[0]
+      });
+
+      var ico = L.icon({
+        iconUrl: colorCircle[1].link,
+        iconSize: [25, 25],
+        iconAnchor: [15, 15],
+        popupAnchor: [-10, -10]
+      });
+      layer.setIcon(ico);
+      
+    },
     opacity: 0.8,
     fillOpacity: 0.8,
     color: 'blue',
-    weight: 0.8,
+    weight: 1.0,
   }
 );
 /* propiedades de la capa de cuenca */
@@ -75,7 +106,7 @@ var edafologia_layer = L.geoJSON(edafologia_data,
     weight: 0.5,
   }
 );
-/* propiedades de la capa de estados */
+/* propiedades de la capa de indice_marginidad_2010_layer */
 var indice_marginidad_2010_layer = L.geoJSON(indice_marginidad_2010_data,
   {
     style: function (feature) {
@@ -103,7 +134,7 @@ var indice_marginidad_2010_layer = L.geoJSON(indice_marginidad_2010_data,
         return feature['properties']['GM'] === col[0]
       });
 
-      console.log('mun: ' + feature['properties']['CVE_ENT']);
+      //console.log('mun: ' + feature['properties']['CVE_ENT']);
 
       return {
         fillColor: color[1].color,
@@ -115,7 +146,7 @@ var indice_marginidad_2010_layer = L.geoJSON(indice_marginidad_2010_data,
     }
   }
 );
-/* propiedades de la capa de estados */
+/* propiedades de la capa de indice_marginidad_2015_layer */
 var indice_marginidad_2015_layer = L.geoJSON(indice_marginidad_2015_data,
   {
     style: function (feature) {
@@ -143,7 +174,7 @@ var indice_marginidad_2015_layer = L.geoJSON(indice_marginidad_2015_data,
         return feature['properties']['GM'] === col[0]
       });
 
-      console.log('mun: ' + feature['properties']['CVE_ENT']);
+     // console.log('mun: ' + feature['properties']['CVE_ENT']);
             
       return {
         fillColor: color[1].color,
@@ -151,6 +182,36 @@ var indice_marginidad_2015_layer = L.geoJSON(indice_marginidad_2015_data,
         fillOpacity: 0.8,
         color: color[1].color,
         weight: 1.0,
+      };
+    }
+  }
+);
+
+/* propiedades de la capa de usv_2005_layer */
+var usv_2005_layer = L.geoJSON(usv_2005_data, {
+  style: () => {
+      var color = Math.floor(Math.random() * 16777215).toString(16);
+      return {
+        fillColor: `#${color}`,
+        opacity: 0.3,
+        fillOpacity: 0.2,
+        color: `#${color}`,
+        weight: 0.8,
+      }
+    }
+  }
+);
+
+/* propiedades de la capa de usv_2016_layer */
+var usv_2016_layer = L.geoJSON(usv_2016_data, {
+    style: () => {
+      var color = Math.floor(Math.random() * 16777215).toString(16);
+      return {
+        fillColor: `#${color}`,
+        opacity: 0.3,
+        fillOpacity: 0.2,
+        color: `#${color}`,
+        weight: 0.8,
       };
     }
   }
@@ -222,7 +283,7 @@ rios_layer.eachLayer(function (layer) {
 /*
 map.on('loading', function (event) {
   console.log('start loading tiles');
-});
+});/*
 map.on('load', function (event) {
   console.log('all tiles loaded');
 });*/
@@ -237,9 +298,11 @@ var data_layers = {
   "Cuencas": cuencas_layer,
   "Estados": estados_layer,
   "Edafologia": edafologia_layer,
-  "DBO05": dbo05_layer,
+  "Demanda de Oxigeno": dbo05_layer,
   "Indice de marginidad 2010": indice_marginidad_2010_layer,
-  "Indice de marginidad 2015": indice_marginidad_2015_layer  
+  "Indice de marginidad 2015": indice_marginidad_2015_layer,
+  "USV 2005": usv_2005_layer,
+  "USV 2016": usv_2016_layer
 };
 
 L.mapboxGL({
@@ -252,7 +315,6 @@ L.control.layers(base_layers, data_layers, {
   position: 'topright',
   collapsed: false
 }).addTo(map);
-// map.dragging.disable();
 
 /* Scale control */
 L.control.scale({
@@ -263,3 +325,7 @@ L.control.scale({
 L.control.zoom({
   position: 'bottomright'
 }).addTo(map);
+
+map.on('overlayadd', e => {
+  onLayerChange(e.name);
+});

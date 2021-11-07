@@ -1,4 +1,8 @@
-document.getElementById("content-title").innerHTML = cuencasBalsasData[0].title;
-document.getElementById("content-info").innerHTML = cuencasBalsasData[0].content;
 
-// TODO: obtener click y modificar el elemento seleccionado con los datos
+document.getElementById("content-title").innerHTML = 'Introduccion';
+document.getElementById("content-info").innerHTML = cuencasBalsasData['Introduccion'].content;
+
+var onLayerChange = (layerName) => {
+  document.getElementById("content-title").innerHTML = layerName;
+  document.getElementById("content-info").innerHTML = cuencasBalsasData[layerName].content;
+};
