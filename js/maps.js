@@ -44,11 +44,9 @@ bounds = [
 /* propiedades de la capa de rios */
 var rios_layer = L.geoJSON(rios_data,
   {
-    fillColor: 'green',
-    opacity: 0.8,
-    fillOpacity: 0.8,
+    opacity: 0.9,
     color: 'blue',
-    weight: 0.8,
+    weight: 0.9,
   }
 );
 /* propiedades de la capa de cuenca */
@@ -118,7 +116,8 @@ var dbo05_layer = L.geoJSON(dbo05_data,
     weight: 1.0,
   }
 );
-/* propiedades de la capa de cuenca */
+// TODO: colores seguimiento del rio colores azules
+/* propiedades de la capa de edafologia */
 var edafologia_layer = L.geoJSON(edafologia_data,
   {
     fillColor: '#4e5257',
@@ -129,13 +128,11 @@ var edafologia_layer = L.geoJSON(edafologia_data,
   }
 );
 /* propiedades de la capa de indice_marginidad_2010_layer */
-var indice_marginidad_2010_layer = L.geoJSON(indice_marginidad_2010_data,
-  {
-    style: function (feature) {
-
+var indice_marginidad_2010_layer = L.geoJSON(indice_marginidad_2010_data, {
+    style: (feature)  => {
       var colors = {
         'Muy alto': {
-          color: '#8B323C'
+          color: '#8B2F2E'
         },
         "Alto": {
           color: '#904432'
@@ -147,7 +144,7 @@ var indice_marginidad_2010_layer = L.geoJSON(indice_marginidad_2010_data,
           color: '#9A8433'
         },
         "Muy bajo": {
-          color: '#959F33'
+          color: '#99D88A'
         }
       };
       let iterableColors = Object.entries(colors);
@@ -156,23 +153,19 @@ var indice_marginidad_2010_layer = L.geoJSON(indice_marginidad_2010_data,
         return feature['properties']['GM'] === col[0]
       });
 
-      //console.log('mun: ' + feature['properties']['CVE_ENT']);
-
       return {
         fillColor: color[1].color,
-        opacity: 0.8,
-        fillOpacity: 0.8,
+        opacity: 0.5,
+        fillOpacity: 0.5,
         color: color[1].color,
-        weight: 1.0,
+        weight: 1.1,
       };
     }
   }
 );
 /* propiedades de la capa de indice_marginidad_2015_layer */
-var indice_marginidad_2015_layer = L.geoJSON(indice_marginidad_2015_data,
-  {
-    style: function (feature) {
-
+var indice_marginidad_2015_layer = L.geoJSON(indice_marginidad_2015_data, {
+    style: (feature) => {
       var colors = {
         'Muy alto': {
           color: '#8B323C'
@@ -195,13 +188,10 @@ var indice_marginidad_2015_layer = L.geoJSON(indice_marginidad_2015_data,
       var color = iterableColors.find(col => {
         return feature['properties']['GM'] === col[0]
       });
-
-     // console.log('mun: ' + feature['properties']['CVE_ENT']);
-            
       return {
         fillColor: color[1].color,
-        opacity: 0.8,
-        fillOpacity: 0.8,
+        opacity: 0.5,
+        fillOpacity: 0.5,
         color: color[1].color,
         weight: 1.0,
       };
@@ -225,9 +215,10 @@ var usv_2005_layer = L.geoJSON(usv_2005_data, {
 );
 
 /* propiedades de la capa de usv_2016_layer */
-var usv_2016_layer = L.geoJSON(usv_2016_data, {
-    style: () => {
-      var color = Math.floor(Math.random() * 16777215).toString(16);
+var usv_2017_layer = L.geoJSON(usv_2017_data, {
+  style: feature => {
+    console.log(feature['properties']['DESCRIPCIO']);
+    var color = Math.floor(Math.random() * 16777215).toString(16); //DESCRIPCIO
       return {
         fillColor: `#${color}`,
         opacity: 0.3,
@@ -317,7 +308,7 @@ var data_layers = {
   "Indice de marginidad 2010": indice_marginidad_2010_layer,
   "Indice de marginidad 2015": indice_marginidad_2015_layer,
   "USV 2005": usv_2005_layer,
-  "USV 2016": usv_2016_layer
+  "USV 2017": usv_2017_layer
 };
 
 // overlayMaps
@@ -339,7 +330,6 @@ L.control.zoom({
 var info = L.control();
 
 info.onAdd = function (props) {
-  console.log(props);
   this._div = L.DomUtil.create('div', 'info');
   this.update();
   return this._div;
