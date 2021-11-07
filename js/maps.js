@@ -74,6 +74,7 @@ var estados_layer = L.geoJSON(estados_data, {
     }    
   }
 );
+
 /* propiedades de la capa de rios */
 var dbo05_layer = L.geoJSON(dbo05_data,
   {
@@ -335,6 +336,9 @@ indice_marginidad_2015_layer.eachLayer(function (layer){
 usv_2017_layer.eachLayer(function (layer){
   layer.bindPopup(`<strong> Estado: </strong> ${layer.feature.properties.DESCRIPCIO} <br>`);
 });
+
+
+
 
 // actualizar weas
 /*
