@@ -251,6 +251,22 @@ dbo05_layer.eachLayer(function (layer) {
   <strong> Cuerpo agua: </strong> ${layer.feature.properties.cuer_agu} <br>
   `);
 });
+//
+indice_marginidad_2010_layer.eachLayer(function (layer) {
+  layer.bindPopup(`<strong> Estado: </strong> ${layer.feature.properties.NOM_ENT} <br>
+  <strong> Municipio: </strong> ${layer.feature.properties.NOM_MUN} <br>
+  <strong> Poblacion total: </strong> ${layer.feature.properties.POB_TOT} <br>`);
+});
+
+indice_marginidad_2015_layer.eachLayer(function (layer){
+  layer.bindPopup(`<strong> Estado: </strong> ${layer.feature.properties.NOM_ENT} <br>
+  <strong> Municipio: </strong> ${layer.feature.properties.NOM_MUN} <br>
+  <strong> Poblacion total: </strong> ${layer.feature.properties.POB_TOT} <br>`);
+});
+
+usv_2017_layer.eachLayer(function (layer){
+  layer.bindPopup(`<strong> Estado: </strong> ${layer.feature.properties.DESCRIPCIO} <br>`);
+});
 
 // actualizar weas
 /*
@@ -270,25 +286,7 @@ info.update = function(props){
   ;
 }*/
 
-//actualiza la informacion del div
-function updateFeature(e){
-  var layer = e.target;
 
-  info.update(layer.feature.properties);
-}
-
-//resetea la informacion
-function resetFeature(e){
-  info.update();
-}
-
-// se asignan a todos los rios estos eventos
-rios_layer.eachLayer(function (layer) {
-  layer.on({
-    mouseover: updateFeature,
-    mouseout: resetFeature
-  });
-});
 
 var base_layers = {
  // "Topografico": OpenTopoMap,
