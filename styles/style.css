@@ -1,37 +1,4 @@
 
-.module-legend{
-  width: 15%;
-  height: 40%;
-  left: 0px;
-  color: #555555;
-  font-size: 13px;
-  max-height: 75%;
-  overflow: auto;
-  padding: 10px 0 56px;
-  z-index: 22;
-  background: white;
-  border-radius: 10px;
-  -webkit-transition: all 0.25s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-  transition: all 0.25s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-  -webkit-transform: translate(0, 100%);  
-  transform: translate(0, 20%);
-  margin-left: 15px;
-  opacity: 0.9;
-}
-
-.module-legend:after{
-  content: "";
-  position: absolute;
-  top: 5%;
-  left: 50%;
-  width: 20%;
-  height: 30%;
-  z-index: 5;
-  background: transparent;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);  
-}
-
 .module-legend-info{
   width: 15%;
   height: 40%;
@@ -40,7 +7,7 @@
   font-size: 13px;
   max-height: 75%;
   min-height: 450px;
-  min-width: 250px;
+  min-width: 280px;
   overflow: auto;
   padding: 10px 0 56px;
   z-index: 22;
@@ -86,13 +53,11 @@
   cursor: url(https://maps.gstatic.com/mapfiles/openhand_8_8.cur) 8 8, default;
 }
 
-.info {
-  
+.info{  
   padding: 6px 8px;
   font: 14px/16px Arial, Helvetica, sans-serif;
-  background: white;
   background: rgb(255, 255, 255);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
 }
 
@@ -101,36 +66,36 @@
   color: #777;
 }
 
-#content-info img{
-  padding: 10px;
-  width: 150px;
+#info-container img{
+  padding: 5px;
+  max-width: 200px;
 }
 
 .scrollable-section{
-  height: 350px;
-  scrollbar-color: #6969dd #e0e0e0;
+  height: 320px;
+  max-height: 325px;
+  overflow-y: scroll;
   scrollbar-width: thin;
   scrollbar-gutter: stable;
 }
 
 .scrollable-section::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 4px;
+  background: #ccc;
+  border-radius: 4px;
 }
 
 /* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
 .scrollable-section::-webkit-scrollbar-thumb:hover {
-    background: #b3b3b3;
-    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+  background: #b3b3b3;
 }
 
 /* Cambiamos el fondo cuando esté en active */
 .scrollable-section::-webkit-scrollbar-thumb:active {
-    background-color: #999999;
+  background-color: #999999;
 }
 .scrollable-section::-webkit-scrollbar-track {
-    background: #e1e1e1;
-    border-radius: 4px;
+  background: #e1e1e1;
+  border-radius: 4px;
 }
 
 /* Cambiamos el fondo cuando esté en active o hover */

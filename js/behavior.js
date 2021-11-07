@@ -1,30 +1,38 @@
 
-document.getElementById("content-title").innerHTML = 'Introduccion';
+// init values
+document.getElementById("content-title").innerHTML = 'Introduccion'; 
 document.getElementById("content-info").innerHTML = cuencasBalsasData['Introduccion'].content;
+document.getElementById("info-container").classList.toggle('scrollable-section');
 
-var onLayerChange = (layerName) => {  
+var onLayerChange = (layerName) => {    
 
-  if (layerName === "Cuencas"){
+  var img = new Image();  
 
-    document.getElementById("content-title").innerHTML = layerName;
+  document.getElementById("content-title").innerHTML = layerName;
+  
+  document.getElementById("info-container").innerHTML = cuencasBalsasData[layerName].content;
 
-    if (cuencasBalsasData[layerName].link) {
-      var img = new Image();
-      img.src = cuencasBalsasData[layerName].link;
-      document.getElementById("info-container").appendChild(img);
-    }
+  if (cuencasBalsasData[layerName].link) {
+    img.src = cuencasBalsasData[layerName].link;
+    document.getElementById("cuenca-image").appendChild(img);
+  }
 
-    document.getElementById("content-info").innerHTML = cuencasBalsasData[layerName].content;
-    
-  }else{
-    document.getElementById("content-title").innerHTML = layerName;
-    document.getElementById("content-info").innerHTML = cuencasBalsasData[layerName].content;
+  var containerClass = document.getElementById("info-container").classList.value;
+  
+  if (layerName === "Estados" && containerClass.includes("scrollable")) {
 
-    if (cuencasBalsasData[layerName].link) {
-      var img = new Image();
-      img.src = cuencasBalsasData[layerName].link;
-      document.getElementById("content-info").appendChild(img);
-    }
+    document.getElementById("info-container").classList.toggle('scrollable-section');
+    return;
+
+  } else if (layerName === "Estados" && !containerClass.includes("scrollable")) {
+    return;
+  }
+  
+  if ((cuencasBalsasData[layerName]['content'].length > 600 || cuencasBalsasData[layerName]['link']) && !containerClass.includes("scrollable")) {
+    document.getElementById("info-container").classList.toggle('scrollable-section');
+
+  } else if (cuencasBalsasData[layerName]['content'].length < 600 && containerClass.includes("scrollable")) {
+    document.getElementById("info-container").classList.toggle('scrollable-section');
   }
 
 };

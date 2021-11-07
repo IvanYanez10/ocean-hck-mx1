@@ -157,7 +157,7 @@ var indice_marginidad_2010_layer = L.geoJSON(indice_marginidad_2010_data, {
         fillColor: color[1].color,
         opacity: 0.5,
         fillOpacity: 0.5,
-        color: color[1].color,
+        color: 'white',
         weight: 1.1,
       };
     }
@@ -192,8 +192,8 @@ var indice_marginidad_2015_layer = L.geoJSON(indice_marginidad_2015_data, {
         fillColor: color[1].color,
         opacity: 0.5,
         fillOpacity: 0.5,
-        color: color[1].color,
-        weight: 1.0,
+        color: 'white',
+        weight: 1.2,
       };
     }
   }
@@ -232,7 +232,7 @@ var usv_2017_layer = L.geoJSON(usv_2017_data, {
 
 /* propiedades de la capa de  */
 var social_2008_layer = L.geoJSON(social_2008_data, {
-  style: feature => {
+  style: () => {
     var color = Math.floor(Math.random() * 16777215).toString(16); //DESCRIPCIO
     return {
       fillColor: `#${color}`,
@@ -287,12 +287,11 @@ var vulnerabilidad_contaminacion_layer = L.geoJSON(vulnerabilidad_contaminacion_
     var color = iterableColors.find(col => {
       return feature['properties']['Vulnerabil'] === col[0]
     });
-    console.log(color);
     return {
       fillColor: color[1].color,
-      opacity: 0.5,
-      fillOpacity: 0.5,
-      color: color[1].color,
+      opacity: 0.4,
+      fillOpacity: 0.4,
+      color: 'white',
       weight: 1.0,
     };
   }
@@ -368,7 +367,7 @@ var base_layers = {
 
 var data_layers = {
   "Rios": rios_layer,
-  "Cuencas": cuencas_layer,
+  "Cuenca río balsas": cuencas_layer,
   "Estados": estados_layer,
   "Edafologia": edafologia_layer,
   "Demanda de Oxigeno": dbo05_layer,
@@ -431,6 +430,9 @@ map.on('overlayadd', e => {
   }else{
     c='';
     info.remove();
+  }
+  if (e.name === "Vulnerabilidad contaminacion"){
+    map.setView([19.382071, -98.127967], 11);
   }
 });
 
