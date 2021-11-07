@@ -1,20 +1,32 @@
 const cuencasBalsasData = {
-  "0": {
-    "title": "Introduccion",
+  "Introduccion": {
     "content": "La rehabilitación de ríos enfatiza la mejora de un ecosistema al recuperar ciertos elementos biofísicos de gran importancia para los medios urbanos, tales como la preservación de bienes y servicios ambientales, así como la incorporación armónica del río al paisaje de la ciudad, la cual busca reparar las funciones",
   },
-  "1": {
-    "title": "factores",
-    "content": "edafologia",
+  "Rios": {
+    "content": "Algo sobre rios?",
   },
-  "2": {
-    "title": "factores",
+  "Cuencas": {
     "content": "uso de suelo",
   },
-  "3": {
-    "title": "factores",
-    "content": "indice d ecapital natural",
+  "Estados": {
+    "content": "Division estatal",
+  },
+  "Edafologia": {
+    "content": "naturaleza del suelo ",
+  },
+  "Demanda de Oxigeno": {
+    "content": "Por ubicacion",
+  },
+  "Indice de marginidad 2010": {
+    "content": "Que muestra diferente",
+  },
+  "Indice de marginidad 2015": {
+    "content": "Que muestra diferente",
+  },
+  "USV 2005": {
+    "content": "USV 2005",
+  },
+  "USV 2016": {
+    "content": "USV 2016",
   }
 }
-
-// TODO: Agregar los datos y mas caracteristicas a cada capa
