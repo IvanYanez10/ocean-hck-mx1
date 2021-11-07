@@ -1,8 +1,7 @@
 
-var token = "pk.eyJ1IjoiaXZhbmNyIiwiYSI6ImNrNzB1ZDB2eDAwOHEzZm5tM2RldmhmeHIifQ.sQ-BVnhKcwSTtbnoTmeziQ"; // token de https://account.mapbox.com/
-
 /* mapas base */
 var terrain = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.{ext}', {
+  attribution: '&copy;stamen-tiles contributors',
   subdomains: 'abcd',
   minZoom: 2,
   maxZoom: 13,
@@ -14,9 +13,28 @@ var hidro = new L.tileLayer.wms(
     layers: ['inegi_RH00_ha_4326'],
 });
 
-var mapbox = L.mapboxGL({
-  accessToken: token,
-  style: 'mapbox://styles/mapbox/light-v10',
+var OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19,
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+});
+
+var OpenTopoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+  maxZoom: 17,
+  attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+});
+
+var Stamen_Watercolor = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}', {
+  attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  subdomains: 'abcd',
+  minZoom: 1,
+  maxZoom: 16,
+  ext: 'jpg'
+});
+
+var CartoDB_PositronNoLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+  subdomains: 'abcd',
+  maxZoom: 20
 });
 
 bounds = [
@@ -243,9 +261,6 @@ dbo05_layer.eachLayer(function (layer) {
   `);
 });
 
-
-
-
 // actualizar weas
 /*
 var info = L.control();
@@ -284,18 +299,13 @@ rios_layer.eachLayer(function (layer) {
   });
 });
 
-/*
-map.on('loading', function (event) {
-  console.log('start loading tiles');
-});/*
-map.on('load', function (event) {
-  console.log('all tiles loaded');
-});*/
-
 var base_layers = {
-  "Mapbox": mapbox,
+ // "Topografico": OpenTopoMap,
+ // "Watercolor": Stamen_Watercolor,
+ // "Street map": OpenStreetMap_Mapnik,
   "Hidrografía": hidro,
   "Terrain": terrain,
+  "Sin leyendas": CartoDB_PositronNoLabels
 };
 
 var data_layers = {
@@ -328,24 +338,47 @@ L.control.zoom({
 
 var info = L.control();
 
-info.onAdd = function () {
+info.onAdd = function (props) {
+  console.log(props);
   this._div = L.DomUtil.create('div', 'info');
   this.update();
   return this._div;
 }
+var c;
+var generateAcotaciones = layer => {
+  c = "<h5 class='ps-3'>Acotacion</h5><hr>";
+  
+  let iterableAnot = Object.entries(cuencasBalsasData[layer]['acotaciones']);
+
+  iterableAnot.map(anot => { //style='background-color:${anot[1].color}'
+    c += `<div class='mx-2 row row-cols-2'>
+            <div class='col ps-2'> <span class='px-3' style='width:100%;height:100%;background-color:${anot[1].color};border-radius:5px;'></span> </div>
+            <div class='col'> <p class='float-end text-end'>${anot[0]}</p> </div>
+          </div>
+          <br>`
+  });
+}
+
 info.update = function () {
-  this._div.innerHTML =
-  "<h5>Acotacion</h5><hr>"+
-  "<div class='px-1 d-block'><div class='d-inline' style='width:10px;height:10px;background-color:green;border-radius:2px;'></div><div class='d-inline float-end'>some</div></div>"+
-  "<div class='px-1 d-block'><div class='d-inline' style='width:10px;height:10px;background-color:red;border-radius:2px;'></div><div class='d-inline float-end'>some 1</div></div>"+
-  "<div class='px-1 d-block'><div class='d-inline' style='width:10px;height:10px;background-color:blue;border-radius:2px;'></div><div class='d-inline float-end'>some 2</div></div>";
+  this._div.innerHTML = c;
 }
 
 map.on('overlayadd', e => {
   onLayerChange(e.name);
   if(cuencasBalsasData[e.name]['acotaciones']){
+    generateAcotaciones(e.name);
     info.addTo(map);
   }else{
     info.remove();
   }
+});
+
+
+map.on('loading', function (event) {
+  console.log('start loading tiles');
+});
+map.on('load', function (event) {
+  //document.getElementById("panel")
+  // load element when its time
+  console.log('all tiles loaded'+event);
 });

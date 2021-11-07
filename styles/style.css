@@ -1,3 +1,4 @@
+
 .module-legend{
   width: 15%;
   height: 40%;
@@ -43,7 +44,7 @@
   overflow: auto;
   padding: 10px 0 56px;
   z-index: 22;
-  background: white;
+  background: rgba(255, 255, 255, 0.7);
   border-radius: 10px;
   -webkit-transition: all 0.25s cubic-bezier(0.445, 0.05, 0.55, 0.95);
   transition: all 0.25s cubic-bezier(0.445, 0.05, 0.55, 0.95);
@@ -63,6 +64,17 @@
   background: transparent;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);  
+}
+
+.info{
+  background: rgba(255, 255, 255, 0.8) !important;
+  max-width: 200px;
+}
+
+.leaflet-control-layers-expanded{
+  background: rgba(255, 255, 255, 0.8) !important;
+  font-family: 'Roboto', sans-serif;
+  width: 200px;
 }
 
 #map{
@@ -92,4 +104,37 @@
 #content-info img{
   padding: 10px;
   width: 150px;
+}
+
+.scrollable-section{
+  height: 350px;
+  scrollbar-color: #6969dd #e0e0e0;
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+}
+
+.scrollable-section::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+/* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+.scrollable-section::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* Cambiamos el fondo cuando esté en active */
+.scrollable-section::-webkit-scrollbar-thumb:active {
+    background-color: #999999;
+}
+.scrollable-section::-webkit-scrollbar-track {
+    background: #e1e1e1;
+    border-radius: 4px;
+}
+
+/* Cambiamos el fondo cuando esté en active o hover */
+.scrollable-section::-webkit-scrollbar-track:hover,
+.scrollable-section::-webkit-scrollbar-track:active {
+  background: #d4d4d4;
 }

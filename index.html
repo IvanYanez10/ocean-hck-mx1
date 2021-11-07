@@ -26,7 +26,9 @@
 <script src="https://unpkg.com/mapbox-gl-leaflet/leaflet-mapbox-gl.js"></script>
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
   html, body{
+    font-family: 'Roboto', sans-serif;
     background-color: #0F0D05;
     width: 100%;
     height: 100%;
@@ -86,14 +88,16 @@
     <button class="btn btn-outline-primary ms-2 mt-2">Reiniciar</button>
   </div>-->
   <!-- Informacion cuadro que muestra la informacion de la capa seleccionada-->
-  <div class="module-legend-info module-toggle px-3">
+  <div id="panel" class="module-legend-info module-toggle px-3" style="overflow:hidden;">
     
   <div>
     <h2 id="content-title" class="d-inline p-2"></h2>
     <i class="d-inline fas fa-sort-down float-end pe-3 fa-2x align-middle"></i>
   </div>
   <hr>
-  <p id="content-info" class="text-justify" style="text-align: justify;"></p> 
+  <div class="container text-justify scrollable-section" style="overflow-y: scroll; text-align: justify;">
+    <p id="content-info"></p> 
+  </div>
   
   </div>
 </div>

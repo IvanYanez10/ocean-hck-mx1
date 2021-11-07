@@ -9,5 +9,6 @@ var onLayerChange = (layerName) => {
     var img = new Image();
     img.src = cuencasBalsasData[layerName].link;
     document.getElementById("content-info").appendChild(img);
+    //document.getElementById("panel").style.transform  = "scale(0,1.1)";
   }
 };
