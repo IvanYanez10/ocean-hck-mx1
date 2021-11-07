@@ -57,9 +57,9 @@ var map = L.map('map', {
   zoom: 6,
   animate: true,
   zoomControl: false,
-  layers: [terrain,hidro, edos,cuencasLayer,riosLayer]
+  layers: [terrain,hidro, edos]
   // maxBoundsViscosity: 1.0
-});
+}).addTo(map).pop;
 /*
 map.on('dragend', function(event) {
   if(true){
@@ -84,12 +84,13 @@ var someLayers = {
 var overlayMaps = {
   "Rios": riosLayer,
   "Cuencas": cuencasLayer,
+  "estados" : edos
 };
 
-L.mapboxGL({
-  accessToken: token,
-  style: 'mapbox://styles/mapbox/white-v10',
-}).addTo(map);
+// L.mapboxGL({
+//   accessToken: token,
+//   style: 'mapbox://styles/mapbox/white-v10',
+// }).addTo(map);
 
 //, overlayMaps
 L.control.layers(someLayers, overlayMaps, {
