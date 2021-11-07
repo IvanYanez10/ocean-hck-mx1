@@ -5,4 +5,9 @@ document.getElementById("content-info").innerHTML = cuencasBalsasData['Introducc
 var onLayerChange = (layerName) => {
   document.getElementById("content-title").innerHTML = layerName;
   document.getElementById("content-info").innerHTML = cuencasBalsasData[layerName].content;
+  if (cuencasBalsasData[layerName].link){
+    var img = new Image();
+    img.src = cuencasBalsasData[layerName].link;
+    document.getElementById("content-info").appendChild(img);
+  }
 };

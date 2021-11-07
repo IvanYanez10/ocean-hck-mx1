@@ -3,7 +3,6 @@ var token = "pk.eyJ1IjoiaXZhbmNyIiwiYSI6ImNrNzB1ZDB2eDAwOHEzZm5tM2RldmhmeHIifQ.s
 
 /* mapas base */
 var terrain = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.{ext}', {
-  attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
   subdomains: 'abcd',
   minZoom: 2,
   maxZoom: 13,
@@ -13,6 +12,11 @@ var terrain = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}
 var hidro = new L.tileLayer.wms(
   'https://ide.sedatu.gob.mx:8080/geonode/wms?', {
     layers: ['inegi_RH00_ha_4326'],
+});
+
+var mapbox = L.mapboxGL({
+  accessToken: token,
+  style: 'mapbox://styles/mapbox/light-v10',
 });
 
 bounds = [
@@ -240,6 +244,10 @@ dbo05_layer.eachLayer(function (layer) {
 });
 
 
+
+
+// actualizar weas
+/*
 var info = L.control();
 
 info.onAdd = function(map){
@@ -247,8 +255,6 @@ info.onAdd = function(map){
   this.update();
   return this._div;
 }
-
-// actualizar weas
 info.update = function(props){
   this._div.innerHTML = 
   '<h5>Información de los Rios</h5>' +
@@ -256,9 +262,7 @@ info.update = function(props){
     <b>ENTIDAD: ${props.ENTIDAD}<b><br>
     <b>TIPO: ${props.TIPO}<b><br>` : "Pasa el puntero por un Rio")
   ;
-}
-
-info.addTo(map);
+}*/
 
 //actualiza la informacion del div
 function updateFeature(e){
@@ -289,8 +293,9 @@ map.on('load', function (event) {
 });*/
 
 var base_layers = {
-  "Hidrografía SEDATU": hidro,
-  "Stamen terrain": terrain,
+  "Mapbox": mapbox,
+  "Hidrografía": hidro,
+  "Terrain": terrain,
 };
 
 var data_layers = {
@@ -304,11 +309,6 @@ var data_layers = {
   "USV 2005": usv_2005_layer,
   "USV 2016": usv_2016_layer
 };
-
-L.mapboxGL({
-  accessToken: token,
-  style: 'mapbox://styles/mapbox/light-v10',
-}).addTo(map);
 
 // overlayMaps
 L.control.layers(base_layers, data_layers, {
@@ -326,6 +326,26 @@ L.control.zoom({
   position: 'bottomright'
 }).addTo(map);
 
+var info = L.control();
+
+info.onAdd = function () {
+  this._div = L.DomUtil.create('div', 'info');
+  this.update();
+  return this._div;
+}
+info.update = function () {
+  this._div.innerHTML =
+  "<h5>Acotacion</h5><hr>"+
+  "<div class='px-1 d-block'><div class='d-inline' style='width:10px;height:10px;background-color:green;border-radius:2px;'></div><div class='d-inline float-end'>some</div></div>"+
+  "<div class='px-1 d-block'><div class='d-inline' style='width:10px;height:10px;background-color:red;border-radius:2px;'></div><div class='d-inline float-end'>some 1</div></div>"+
+  "<div class='px-1 d-block'><div class='d-inline' style='width:10px;height:10px;background-color:blue;border-radius:2px;'></div><div class='d-inline float-end'>some 2</div></div>";
+}
+
 map.on('overlayadd', e => {
   onLayerChange(e.name);
+  if(cuencasBalsasData[e.name]['acotaciones']){
+    info.addTo(map);
+  }else{
+    info.remove();
+  }
 });
