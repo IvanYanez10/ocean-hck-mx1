@@ -356,31 +356,7 @@ usv_2017_layer.eachLayer(function (layer){
   layer.bindPopup(`<strong> Estado: </strong> ${layer.feature.properties.DESCRIPCIO} <br>`);
 });
 
-// vulnerabilidad_layer.eachLayer(function (layer){
-//   layer.bindPopup(`<strong>Nivel: </strong> ${layer.feature.properties.Vulnerabil} <br>`);
-// })
 
-function getColor(tipo) {
-  return tipo === "Muy Baja" ? "#fdb777"  :
-         tipo === "Baja" ? "#fda766" :
-         tipo === "Media" ? "#fd9346" : 
-         tipo === "Alta" ? "#fd7f2c" :
-         tipo === "Muy Alta" ? "#ff6200" :
-          "#ffffff";
-}
-
-function style(feature){
-  return {
-    fillColor : getColor(feature.properties.Vulnerabil),
-    // weight: 2,
-    // opacity: 1,
-    // color: 'white',
-    // dashArray: '3',
-    fillOpacity : 0.7
-  }
-}
-
-vulnerabilidad_layer.setStyle(style);
 
 
 // actualizar weas
