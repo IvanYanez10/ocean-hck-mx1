@@ -7,17 +7,15 @@ const cuencasBalsasData = {
     "link": "https://www.ngenespanol.com/wp-content/uploads/2018/08/%C2%BFSab%C3%ADas-que-existe-un-r%C3%ADo-que-fluye-debajo-del-R%C3%ADo-Amazonas-1280x720.png"
   },
   "Cuencas": {
-    "content": "uso de suelo, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+    "content": "Por sus características fisiográficas, la Cuenca del Río Balsas, es poco probable que sea afectada por inundaciones, debido a que cuenta con pequeños valles y en su mayor parte está conformada por zonas montañosas.Durante la temporada de lluvias 2020, esta cuenca del Río Balsas registró afectaciones por encharcamientos e inundaciones en 3 sitios de 3 municipios, con una superficie de 0.014 km² y una población afectada de 205 habitantes, información que podrás consultar en esta sección.",
+    "link": "https://caem.edomex.gob.mx/sites/caem.edomex.gob.mx/files/images/atlas/2021/CuencaRioBalsas-2021.png"
   },
   "Estados": {
     "content": "Division estatal, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
   },
   "Edafologia": {
     "content": "naturaleza del suelo, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    "acotaciones": {
-      name: "",
-      color: ""
-    }
+    
   },
   "Demanda de Oxigeno": {
     "content": "Por ubicacion, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
@@ -43,10 +41,10 @@ const cuencasBalsasData = {
     "content": "Que muestra diferente, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     "acotaciones": {
       "Excelente": {
-        color: "blue"
+        color: "green"
       },
       "Buena calidad": {
-        color: "green"
+        color: "lightgreen"
       },
       "Aceptable": {
         color: "yellow"
@@ -63,10 +61,10 @@ const cuencasBalsasData = {
     "content": "Que muestra diferente, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     "acotaciones": {
       "Excelente": {
-        color: "blue"
+        color: "green"
       },
       "Buena calidad": {
-        color: "green"
+        color: "lightgreen"
       },
       "Aceptable": {
         color: "yellow"
@@ -80,32 +78,20 @@ const cuencasBalsasData = {
     }
   },
   "USV 2005": {
-    "content": "USV 2005, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    "acotaciones": {
-      name: "",
-      color: ""
-    }
+    "content": "Uso de suelo y vegetacion 2005, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    
   },
   "USV 2017": {
-    "content": "USV 2017, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    "acotaciones": {
-      name: "",
-      color: ""
-    }
+    "content": "Uso de suelo y vegetacion 2017, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    
   },
   "Social 2008": {
     "content": "Social 2008, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    "acotaciones": {
-      name: "",
-      color: ""
-    }
+    
   },
   "Social 2018": {
     "content": "Social 2018, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    "acotaciones": {
-      name: "",
-      color: ""
-    }
+   
   },
   "Vulnerabilidad contaminacion": {
     "content": "Vulnerabilidad contaminacion, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
@@ -125,7 +111,8 @@ const cuencasBalsasData = {
       "Muy alta": {
         color: "red"
       },
-    }
+    },
+    name: "Grado de vulnerabilidad a contaminación"
   }
 }
 

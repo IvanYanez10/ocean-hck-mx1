@@ -48,46 +48,7 @@
 <div id="wrapper" style="width: 95%; height: 89%; display: flex;">
   <!-- Mapa -->
   <div id="map"></div>
-  <!-- Capas pensado para controlar la activacion de las capas--><!--
-  <div class="module-legend module-toggle">
-    <ul class="list-group">
-      <li class="ps-3" style="font-size: 1.5rem;"><span>Capas</span><i class="fas fa-sort-down float-end pe-3"></i></li>
-      <ul class="list-group">
-        <li class="list-group-item">
-          <div class="float-start" style="width: 15px;height: 15px;background-color: aquamarine; margin-right: 20px;"></div> 
-          <span>Capa 1</span>
-          <input class="float-end form-check-input me-1" type="checkbox" value="">        
-        </li>
-        <li class="list-group-item">
-          <div class="float-start" style="width: 15px;height: 15px;background-color: aquamarine; margin-right: 20px;"></div> 
-          <span>Capa 1</span>
-          <input class="float-end form-check-input me-1" type="checkbox" value="">        
-        </li>
-        <li class="list-group-item">
-          <div class="float-start" style="width: 15px;height: 15px;background-color: aquamarine; margin-right: 20px;"></div> 
-          <span>Capa 1</span>
-          <input class="float-end form-check-input me-1" type="checkbox" value="">        
-        </li>
-        <li class="list-group-item">
-          <div class="float-start" style="width: 15px;height: 15px;background-color: aquamarine; margin-right: 20px;"></div> 
-          <span>Capa 1</span>
-          <input class="float-end form-check-input me-1" type="checkbox" value="">        
-        </li>
-        <li class="list-group-item">
-          <div class="float-start" style="width: 15px;height: 15px;background-color: aquamarine; margin-right: 20px;"></div> 
-          <span>Capa 1</span>
-          <input class="float-end form-check-input me-1" type="checkbox" value="">        
-        </li>
-        <li class="list-group-item">
-          <div class="float-start" style="width: 15px;height: 15px;background-color: aquamarine; margin-right: 20px;"></div> 
-          <span>Capa 1</span>
-          <input class="float-end form-check-input me-1" type="checkbox" value="">        
-        </li>
-      </ul>
-    </ul>
-    <button class="btn btn-outline-primary ms-2 mt-2">Reiniciar</button>
-  </div>-->
-  <!-- Informacion cuadro que muestra la informacion de la capa seleccionada-->
+
   <div id="panel" class="module-legend-info module-toggle px-3" style="overflow:hidden;">
     
   <div>
@@ -95,7 +56,7 @@
     <i class="d-inline fas fa-sort-down float-end pe-3 fa-2x align-middle"></i>
   </div>
   <hr>
-  <div class="container text-justify scrollable-section" style="overflow-y: scroll; text-align: justify;">
+  <div id="info-container" class="container text-justify scrollable-section " style="overflow-y: scroll; text-align: justify;">
     <p id="content-info"></p> 
   </div>
   

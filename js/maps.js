@@ -214,10 +214,9 @@ var usv_2005_layer = L.geoJSON(usv_2005_data, {
   }
 );
 
-/* propiedades de la capa de usv_2016_layer */
+/* propiedades de la capa de usv_2017_layer */
 var usv_2017_layer = L.geoJSON(usv_2017_data, {
-  style: feature => {
-    //console.log(feature['properties']['DESCRIPCIO']);
+  style: () => {
     var color = Math.floor(Math.random() * 16777215).toString(16); //DESCRIPCIO
       return {
         fillColor: `#${color}`,
@@ -231,7 +230,7 @@ var usv_2017_layer = L.geoJSON(usv_2017_data, {
 );
 
 
-/* propiedades de la capa de usv_2016_layer */
+/* propiedades de la capa de  */
 var social_2008_layer = L.geoJSON(social_2008_data, {
   style: feature => {
     var color = Math.floor(Math.random() * 16777215).toString(16); //DESCRIPCIO
@@ -247,7 +246,7 @@ var social_2008_layer = L.geoJSON(social_2008_data, {
 );
 
 
-/* propiedades de la capa de usv_2016_layer */
+/* propiedades de la capa de  */
 var social_2018_layer = L.geoJSON(social_2018_data, {
   style: feature => {
     var color = Math.floor(Math.random() * 16777215).toString(16); //DESCRIPCIO
@@ -263,7 +262,7 @@ var social_2018_layer = L.geoJSON(social_2018_data, {
 );
 
 
-/* propiedades de la capa de usv_2016_layer */
+/* propiedades de la capa de  */
 var vulnerabilidad_contaminacion_layer = L.geoJSON(vulnerabilidad_contaminacion_data, {
   style: (feature) => {
     var colors = {
@@ -430,6 +429,7 @@ map.on('overlayadd', e => {
     generateAcotaciones(e.name);
     info.addTo(map);
   }else{
+    c='';
     info.remove();
   }
 });
